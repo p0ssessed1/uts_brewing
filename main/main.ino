@@ -47,7 +47,7 @@ void loop() {
         }
       
     }
-  else if (digitalRead(T<17)
+  else if (digitalRead(T<17))
     {
       digitalWrite(heatbelt, HIGH);
       startime = millis();
