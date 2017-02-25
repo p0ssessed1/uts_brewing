@@ -4,28 +4,21 @@
 #include "Arduino.h"
 #include "uts_wifi.h"
 
+char *_ssid;
+char *_pass;
+
+
 int uts_wifi::uts_wifi_setup()
 {
-	// initialize serial:
-	  Serial.begin(9600);
+  int status = WL_IDLE_STATUS;
 
-	  // attempt to connect using WPA2 encryption:
-	  Serial.println("Attempting to connect to WPA network...");
-	  status = WiFi.begin(_ssid, _pass);
+  // attempt to connect using WPA2 encryption:
+  status = WiFi.begin(_ssid, _pass);
 
-	  // if you're not connected, stop here:
-	  if ( status != WL_CONNECTED) { 
-		Serial.println("Couldn't get a wifi connection");
-		while(true);
-	  } 
-	  // if you are connected, print out info about the connection:
-	  else {
-		Serial.println("Connected to network");
-	  }
+  return status;
 }
 
-uts_wifi::uts_wifi(string ssid, string password){
-		_ssid=ssid;
+uts_wifi::uts_wifi(char* ssid, char* password){
+		_ssid = ssid;
 		_password=password;
-		
-	}	
+}	
